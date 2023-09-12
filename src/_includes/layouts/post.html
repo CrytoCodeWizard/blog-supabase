@@ -65,21 +65,21 @@ eleventyComputed:
 
             // Define the async function outside of the event listener
             async function getShareData() {
-                if (!this._blob) {
-                    // Fetch the image as a Blob
-                    this._blob = await(await fetch(this.document.images[2].currentSrc)).blob();
-                }
+    if (!this._imageBlob) {
+        // Fetch the image as a Blob
+        this._imageBlob = await (await fetch(this.document.images[2].currentSrc)).blob();
+    }
 
-                // Create a Blob for the text 'blah'
-                const textBlob = new Blob(['blah'], {type: 'text/plain'});
+    // Create a Blob for the text 'blah'
+    const textBlob = new Blob(['blah'], { type: 'text/plain' });
 
-                // Combine the image Blob and text Blob into a single Blob
-                const combinedBlob = new Blob([this._blob, textBlob]);
+    // Create a File object for the image
+    const imageFile = new File([this._imageBlob], 'image.png', { type: this._imageBlob.type });
 
-                // Create a File object from the combined Blob
-                const file = new File([combinedBlob], 'image_with_text.png', {type: combinedBlob.type});
+    // Create a File object for the text
+    const textFile = new File([textBlob], 'text.txt', { type: textBlob.type });
 
-                return {files: [file]};
+    return { files: [imageFile, textFile] };
             }
 
             // Define the onShare function
