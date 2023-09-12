@@ -14,17 +14,6 @@ eleventyComputed:
 {% endblock %}
 
 {% block body %}
-    <!-- ============================================ -->
-    <!--                    LANDING                   -->
-    <!-- ============================================ -->
-
-    <section id="int-hero">
-        <picture>
-            <source media="(max-width: 600px)" srcset="/assets/images/cabinets2-m.jpg">
-            <source media="(min-width: 601px)" srcset="/assets/images/cabinets2.jpg">
-            <img aria-hidden="true" decoding="async" src="/assets/images/cabinets2.jpg" alt="kitchen cabinets" loading="eager" width="2500" height="1667">
-        </picture>
-    </section>
 
     <!-- ============================================ -->
     <!--              Main Blog Content               -->
@@ -40,7 +29,7 @@ eleventyComputed:
             <article class="blog-article">
                 <!--Main Article Image-->
                 <picture class="blog-mainImage">
-                    <img src="{{ image }}" alt="{{ imageAlt }}" width="795" height="400" decoding="async" />
+                    <img src="{{ image }}" alt="{{ imageAlt }}" width="795" height="400" decoding="async"/>
                 </picture>
 
                 <!--Article Info-->
@@ -65,10 +54,33 @@ eleventyComputed:
                 <section id="blog-content">
                     {{ content | safe }}
                 </section>
+                <a class="blog-link" id="shareButton">Compartilhar</a>
             </article>
         </div>
         <!-- End .main-content -->
+        <script>
+            // Get a reference to the share button
+            const shareButton = document.getElementById('shareButton');
 
+            // Add a click event listener to the button
+            shareButton.addEventListener('click', () => {
+                if (navigator.share) {
+                    // Use the Web Share API to trigger the sharing dialog
+                    navigator
+                        .share({title: 'Shared Content Title', text: 'Shared content description or text', url: 'https://example.com/shared-page-url'})
+                        .then(() => {
+                            console.log('Shared successfully');
+                        })
+                        .catch((error) => {
+                            alert('Web Share API is not supported in this brxwser');
+                            console.error('Error sharing:', error);
+                        });
+                } else {
+                    // Fallback for browsers that don't support the Web Share API
+                    //alert('Web Share API is not supported in this brxwser');
+                }
+            });
+        </script>
         {% include 'components/featured-post.html' %}
     </div>
 {% endblock %}

@@ -1,0 +1,5 @@
+{
+	"layout": "layouts/post.html",
+	"tags": "post",
+	"permalink": "acervo/{{title}}/index.html"
+}
