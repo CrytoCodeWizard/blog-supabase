@@ -79,11 +79,7 @@ eleventyComputed:
                 // Create a File object for the text
                 const textFile = new File([textBlob], 'text.txt', {type: textBlob.type});
 
-                return {
-                    title: 'teste',
-                    text: 'hello darkness my old friend',
-                    files: [imageFile]
-                };
+                return {title: 'teste', text: 'hello darkness my old friend', caption: 'thingamaling', files: [imageFile]};
             }
 
             // Define the onShare function
