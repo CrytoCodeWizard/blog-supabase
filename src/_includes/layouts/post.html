@@ -58,27 +58,41 @@ eleventyComputed:
             </article>
         </div>
         <!-- End .main-content -->
+
         <script>
             // Get a reference to the share button
             const shareButton = document.getElementById('shareButton');
 
-            // Add a click event listener to the button
-            shareButton.addEventListener('click', () => {
-                if (navigator.share) {
-                    // Use the Web Share API to trigger the sharing dialog
-                    navigator
-                        .share({title: 'Shared Content Title', text: 'Shared content description or text', url: 'https://example.com/shared-page-url'})
-                        .then(() => {
-                            console.log('Shared successfully');
-                        })
-                        .catch((error) => {
-                            alert('Web Share API is not supported in this brxwser');
-                            console.error('Error sharing:', error);
-                        });
-                } else {
-                    // Fallback for browsers that don't support the Web Share API
-                    //alert('Web Share API is not supported in this brxwser');
+            // Define the async function outside of the event listener
+            async function getShareData() {
+                if (!this._blob) {
+                    this._blob = await(await fetch(this.document.images[2].currentSrc)).blob();
                 }
+                const file = new File([this._blob], 'image.png', {type: this._blob.type});
+
+                return {files: [file]};
+            }
+
+            // Define the onShare function
+            async function onShare() {
+                if (this._isLoading) {
+                    return;
+                }
+
+                this._isLoading = true;
+                try {
+                    const data = await getShareData.call(this);
+                    await navigator.share(data);
+                } catch (error) {
+                    alert(`error: ${error.message}`);
+                }
+                this._isLoading = false;
+            }
+
+            // Add an event listener to your share button
+            shareButton.addEventListener('click', async () => {
+                // Call the onShare function within the event listener
+                await onShare.call(this);
             });
         </script>
         {% include 'components/featured-post.html' %}
