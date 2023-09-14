@@ -55,6 +55,7 @@
   }
 
   // Button - can be replaced using CodeStitch's "Button" Stitches
+  .share-button,
   .cs-button-solid {
     font-size: calc(16 / 16 * 1rem);
     font-weight: bold;
@@ -952,7 +953,7 @@
 
     h1 {
       color: #fff;
-      font-size: 64/30rem;
+      font-size: 30rem;
       text-align: center;
       margin: 0 auto;
       position: relative;

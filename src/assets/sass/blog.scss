@@ -6,6 +6,7 @@
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0em) {
+
 	body,
 	html,
 	* {
@@ -61,6 +62,7 @@
 
 		&:hover {
 			color: var(--headerColor);
+
 			&:before {
 				opacity: 1;
 			}
@@ -176,9 +178,8 @@
 
 		h1 {
 			color: #fff;
-			font-size: calc(64 / 16 * 1rem);
+			font-size: calc(36 / 16 * 1rem);
 			text-align: center;
-			margin: 0 auto;
 			position: relative;
 			width: 96%;
 			max-width: calc(500 / 16 * 1rem);
@@ -255,6 +256,7 @@
 		flex-direction: row;
 		align-items: flex-start;
 		column-gap: calc(20 / 16 * 1em);
+		background-color: #d5d5d5;
 	}
 }
 
@@ -272,7 +274,7 @@
 
 		.blog-mainImage {
 			width: 100%;
-			height: clamp(400px, 30vw, 400px);
+			height: clamp(300px, 30vw, 300px);
 			position: relative;
 			display: block;
 			border-radius: calc(8 / 16 * 1em) calc(8 / 16 * 1em) 0 0;
@@ -292,6 +294,8 @@
 			padding: clamp(30px, 5vw, 50px);
 			border: 1px solid #ebebeb;
 			border-radius: 0 0 calc(8 / 16 * 1em) calc(8 / 16 * 1em);
+			background-color: #f7f7f7;
+			border: 1px solid rgb(0, 0, 0);
 		}
 
 		.blog-author-img {
@@ -343,7 +347,7 @@
 		}
 
 		.blog-desc {
-			font-size: calc(16 / 16 * 1rem);
+			font-size: calc(24 / 16 * 1rem);
 			line-height: 1.5em;
 			margin: calc(16 / 16 * 1rem) 0 calc(32 / 16 * 1rem);
 			color: var(--bodyTextColor);
@@ -389,6 +393,7 @@
 
 			&:hover {
 				color: var(--headerColor);
+
 				&:before {
 					opacity: 1;
 				}
@@ -410,6 +415,7 @@
 @media only screen and (min-width: 0em) {
 	body.dark-mode {
 		.recent-articles {
+
 			.blog-h1,
 			.blog-desc,
 			.blog-author,
@@ -419,11 +425,13 @@
 		}
 
 		.blog-sidebar {
+
 			.feature-h3,
 			.feature-date,
 			.blog-header {
 				color: #f7f7f7;
 			}
+
 			.blog-header {
 				&:after {
 					background: var(--primary);
@@ -432,6 +440,7 @@
 		}
 
 		.blog-article {
+
 			.blog-h1,
 			.blog-author,
 			.blog-date {
@@ -439,6 +448,7 @@
 			}
 
 			#blog-content {
+
 				h1,
 				h2,
 				h3,
@@ -447,11 +457,13 @@
 				h6 {
 					color: #f7f7f7;
 				}
+
 				p,
 				li {
 					color: #f7f7f7;
 					opacity: 0.8;
 				}
+
 				a {
 					color: #9dafe5;
 				}
@@ -584,6 +596,7 @@
 		max-width: calc(795 / 16 * 1em);
 		width: 100%;
 		display: block;
+
 		.blog-mainImage {
 			width: 100%;
 			height: clamp(200px, 30vw, 400px);
@@ -788,6 +801,7 @@
 		.cs-nav-li {
 			list-style: none;
 			line-height: 1.5em;
+
 			&:last-of-type {
 				margin-bottom: 0;
 			}

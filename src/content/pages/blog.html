@@ -83,7 +83,6 @@ eleventyNavigation:
                 <!--Blog Date-->
                 <span class="blog-date">{{ post.date | postDate }}</span>
               </div>
-              <h2 class="blog-h1">{{ post.data.title }}</h2>
               <p class="blog-desc">{{ post.data.description }}</p>
               <button class="share-button">Compartilhar</button>
             </div>
@@ -102,15 +101,14 @@ eleventyNavigation:
       return {files: [imageFile]};
     }
 
-    async function onShare(imageSrc, text) {
+    async function onShare(imageSrc) {
       try {
         const data = await getShareData(imageSrc);
         await navigator.share({
-          ...data,
-          text
+          ...data
         });
       } catch (error) {
-        alert(`error: ${error.message}`);
+        //alert(`error: ${error.message}`);
       }
     }
 
@@ -134,8 +132,8 @@ eleventyNavigation:
           alert("Texto copiado para a Área de Transferência!");
         }
 
-        await onShare(imageSrc, text);
-      });
+        await onShare(imageSrc);
+      })
     });
   </script>
 
