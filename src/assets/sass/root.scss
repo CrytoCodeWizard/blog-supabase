@@ -509,11 +509,9 @@
   body.dark-mode {
     #cs-navigation {
       background-color: var(--dark);
-      background-image: var(--darkwaveybg);
       .cs-logo {
         /* makes it white */
-        filter: grayscale(1) brightness(100%)
-          drop-shadow(0px 0px 0.8px var(--bodyTextColorWhite));
+        //filter: invert(0);
         transition: 0.3s;
       }
 
@@ -1274,7 +1272,7 @@
       width: 96%;
       margin: auto;
       text-align: center;
-      margin-top: calc(100 / 16 * 1rem);
+      margin-top: calc(64 / 16 * 1rem);
       line-height: calc(36 / 16 * 1rem);
       font-size: calc(16 / 16 * 1rem);
 

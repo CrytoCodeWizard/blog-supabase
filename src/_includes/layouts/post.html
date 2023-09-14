@@ -60,29 +60,16 @@ eleventyComputed:
         <!-- End .main-content -->
 
         <script>
-            // Get a reference to the share button
             const shareButton = document.getElementById('shareButton');
+            const myTextElement = document.getElementById('blog-content');
 
-            // Define the async function outside of the event listener
             async function getShareData() {
                 if (!this._imageBlob) {
-                    // Fetch the image as a Blob
                     this._imageBlob = await(await fetch(this.document.images[2].currentSrc)).blob();
                 }
-
-                // Create a File object for the image
                 const imageFile = new File([this._imageBlob], 'image.png', {type: this._imageBlob.type});
-
-                // Create a Blob for the text 'blah'
-                const textBlob = new Blob(['blah'], {type: 'text/plain'});
-
-                // Create a File object for the text
-                const textFile = new File([textBlob], 'text.txt', {type: textBlob.type});
-
-                return {title: 'teste', text: 'hello darkness my old friend', caption: 'thingamaling', files: [imageFile]};
+                return {files: [imageFile]};
             }
-
-            // Define the onShare function
             async function onShare() {
                 if (this._isLoading) {
                     return;
@@ -97,10 +84,9 @@ eleventyComputed:
                 }
                 this._isLoading = false;
             }
-
-            // Add an event listener to your share button
             shareButton.addEventListener('click', async () => {
-                // Call the onShare function within the event listener
+                navigator.clipboard.writeText(document.querySelector("#blog-content > p").innerText);
+                alert("Texto copiado para a Área de Transferência!")
                 await onShare.call(this);
             });
         </script>

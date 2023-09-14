@@ -6,7 +6,7 @@ date: 2023-06-08T15:28:08.486Z
 tags:
   - post
   - featured
-image: /assets/images/blog/tumblr_c70e46bbfa81f54f856a64ff8f4f7804_b590032f_1280.png
+image: /assets/images/blog/tamanho_ideal.webp
 imageAlt: Kitchen
 ---
 

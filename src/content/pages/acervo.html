@@ -46,7 +46,7 @@ eleventyNavigation:
             <!-- ============================================ -->
 
             {% if collectionsAcervo.post | length == 0 %}
-                <h1>Sem Postagens Recentes</h1>
+                <h1>O acervo está vazio por enquanto!</h1>
             {% else %}
                 {%- for post in collectionsAcervo.post | reverse -%}
                     <article class="recent-articles">

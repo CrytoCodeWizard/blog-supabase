@@ -13,7 +13,6 @@ eleventyNavigation:
   <link rel="stylesheet" href="/css/blog.css"/>
 
 {% endblock %}
-
 {% block body %}
 
   <!-- ============================================ -->
@@ -72,28 +71,72 @@ eleventyNavigation:
                 <!--Author Image-->
                 <picture class="blog-author-img">
                   <img
-                                    src="/assets/svgs/profile.svg"
-                                    alt="house"
-                                    width="32"
-                                    height="32"
-                                    decoding="async"/>
+              src="/assets/svgs/profile.svg"
+              alt="house"
+              width="32"
+              height="32"
+              decoding="async"
+/>
                 </picture>
                 <span class="blog-author">{{ post.data.author }}</span>
                 <span aria-hidden="true" class="blog-dot"></span>
                 <!--Blog Date-->
                 <span class="blog-date">{{ post.date | postDate }}</span>
               </div>
-              <h2 class="blog-h1">
-                {{ post.data.title }}
-              </h2>
-              <p class="blog-desc">
-                {{ post.data.description }}
-              </p>
-              <a href="{{ post.url }}" class="blog-link">Continue Reading</a>
+              <h2 class="blog-h1">{{ post.data.title }}</h2>
+              <p class="blog-desc">{{ post.data.description }}</p>
+              <button class="share-button">Compartilhar</button>
             </div>
           </article>
         {%- endfor -%}
       {% endif %}
     </div>
   </div>
+  <script>
+    const shareButtons = document.querySelectorAll('.share-button');
+    const recentArticlesContainers = document.querySelectorAll('.recent-articles');
+
+    async function getShareData(imageSrc) {
+      const imageBlob = await(await fetch(imageSrc)).blob();
+      const imageFile = new File([imageBlob], 'image.png', {type: imageBlob.type});
+      return {files: [imageFile]};
+    }
+
+    async function onShare(imageSrc, text) {
+      try {
+        const data = await getShareData(imageSrc);
+        await navigator.share({
+          ...data,
+          text
+        });
+      } catch (error) {
+        alert(`error: ${error.message}`);
+      }
+    }
+
+    recentArticlesContainers.forEach((container, index) => {
+      const shareButton = container.querySelector('.share-button');
+      const textElement = container.querySelector('.blog-desc');
+      const imageElement = container.querySelector('img');
+
+      shareButton.addEventListener('click', async () => {
+        const imageSrc = imageElement
+          ? imageElement.currentSrc
+          : '';
+        const text = textElement
+          ? textElement.innerText
+          : '';
+
+        if (text) {
+          navigator
+            .clipboard
+            .writeText(text);
+          alert("Texto copiado para a Área de Transferência!");
+        }
+
+        await onShare(imageSrc, text);
+      });
+    });
+  </script>
+
 {% endblock %}
