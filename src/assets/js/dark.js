@@ -34,7 +34,7 @@ function detectColorScheme() {
 }
 
 // run on page load
-detectColorScheme();
+//detectColorScheme();
 
 //// add event listener to the dark mode button toggle
 //document.getElementById('dark-mode-toggle').addEventListener('click', () => {
