@@ -1,0 +1,77 @@
+@media only screen and (min-width: 0em) {
+    body,
+	html,
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-size: 100%;
+	}
+
+	.login-container {
+		width: 30%;
+		max-width: calc(1120 / 16 * 1em);
+		margin: 10rem auto;
+        padding: 5rem;
+
+        .login-form {
+            padding: 1rem;
+            background: #efefef;
+            border-radius: 10px;
+            box-shadow: 6px 5px #d0d0d0;
+            
+            .form-title {
+                text-align: center;
+                font-size: 2rem;
+                text-transform: uppercase;
+                padding: 1rem 0.5rem;
+            }
+
+            .form-item {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 15px;
+            }
+
+            .form-label {
+                display: inline-block;
+                width: 20%;
+                font-size: small;
+            }
+
+            .form-input {
+                outline: 2px solid transparent;
+                outline-offset: 2px;
+                --tw-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+                --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+                padding: 0.5rem 1rem;
+                border-color: var(white);
+                border-width: 0.5px;
+                background-color: #e4e1db;
+                border-radius: 10px;
+                font-size: small;
+            }
+
+            .form-button {
+                font-size: 1rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                text-decoration: none;
+                display: inline-block;
+                width: auto;
+                text-align: center;
+                padding: 0.5rem 0.7rem;
+                position: relative;
+                background-color: var(--primary);
+                border: none;
+                transition: color 0.3s;
+                transition-delay: 0.1s;
+            }
+
+            .form-link {
+                padding: 0.5rem 0.7rem;
+            }
+        }
+	}
+}

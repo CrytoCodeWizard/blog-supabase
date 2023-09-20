@@ -1,0 +1,42 @@
+---
+title: "Login"
+description: "Login"
+preloadImg: "/assets/images/cabinets2.jpg"
+permalink: "signup/"
+---
+
+{% extends "layouts/base.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/login.css"/>
+
+{% endblock %}
+  <!-- ============================================ -->
+  <!--              Main Login Content               -->
+  <!-- ============================================ -->
+{% block body %}
+    <div class="login-container">
+        <div class="login-form">
+            <h2 class="form-title">
+                Sign Up
+            </h2>
+            <div class="form-item">
+              <label for="email" class="form-label">Email:</label>
+              <input type="text" class="form-input" id="email" name="email" required>
+            </div>
+            <div class="form-item">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-input" id="password" name="password" required>
+            </div>
+            <div class="form-item">
+                <button 
+                    class="form-button" 
+                    type="submit"
+                    onclick="signUp()">
+                    SignUp
+                </button>
+                <a class="form-link" href="/Login">Login</a>
+            </div>
+          </div>
+    </div>
+
+{% endblock %}
